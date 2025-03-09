@@ -73,7 +73,7 @@ def last_in_column():
     return column
 
 def turn():
-    # Input the user to 
+    # Input the user to choose a column and return the index of the respective column
     show_board()
     columns = available_columns(last_in_column())
     piece = ""
