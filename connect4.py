@@ -59,17 +59,23 @@ def last_in_column():
 
 def turn():
     show_board()
-    piece = ""
     columns = available_columns(last_in_column())
-    while columns.count(piece) == 0:
-        piece = input(f"Pick a column number to place your piece: \n{columns}\n")
+    piece = ""
+    while True:
+        piece = input(f"Please enter an available column \n{columns}: ")
+        if piece.isnumeric() and columns.count(int(piece)) != 0:
+            break
+        else:
+            print("Not an available column")
+    return int(piece)
 
 def main():
     players = assign_players()
-    # print(players)
-    turn()
+    move = turn()
+    row = int(last_in_column()[move] - 1)
+    board[row][move] = "R"
+    show_board()
     # while win_condition() != False:
     #     player_player
-    pass
 
 main()
